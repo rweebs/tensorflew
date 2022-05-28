@@ -65,6 +65,7 @@ RUN pip install opencv-python-headless==4.1.2.30
 WORKDIR /app
 RUN pip install -r requirements.txt
 
+EXPOSE 8080
 ENTRYPOINT [ "python" ]
 
 CMD ["main.py" ]

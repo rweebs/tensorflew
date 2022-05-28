@@ -1,19 +1,17 @@
 from inferenceutils import *
-
-labelmap_path = 'labelmap.pbtxt'
-
-category_index = label_map_util.create_category_index_from_labelmap(labelmap_path, use_display_name=True)
-tf.keras.backend.clear_session()
-model = tf.saved_model.load(f'saved_model')
-
-
-
+import psycopg2
 import imghdr
 import io
 from flask import Flask, render_template, request, redirect, url_for, abort, \
     send_from_directory, jsonify, make_response
 from werkzeug.utils import secure_filename
 import os
+
+labelmap_path = 'labelmap.pbtxt'
+
+category_index = label_map_util.create_category_index_from_labelmap(labelmap_path, use_display_name=True)
+tf.keras.backend.clear_session()
+model = tf.saved_model.load(f'saved_model')
 
 app = Flask(__name__)
 app.config['MAX_CONTENT_LENGTH'] = 2 * 1024 * 1024
@@ -44,17 +42,19 @@ def upload_files():
     buffer = io.BytesIO()
     uploaded_file.save(buffer)
 
-    image_np = load_image_into_array(image_name)
+    image_np = load_image_into_array(uploaded_file)
     output_dict = run_inference_for_single_image(model, image_np)
     threshold = 0.5
     food_predict = []
     for i in range(len(output_dict['detection_scores'])):
-    if output_dict['detection_scores'][i] > threshold:
-        label = output_dict['detection_classes'][i]
-        name = category_index[label]
-        if name not in food_predict:
-        food_predict.append(name)
-        conn = psycopg2.connect(
+        if output_dict['detection_scores'][i] > threshold:
+            label = output_dict['detection_classes'][i]
+            name = category_index[label]
+            if name not in food_predict:
+                food_predict.append(name.get('name'))
+    print(filename)
+    print("output dict:",output_dict)
+    conn = psycopg2.connect(
     host="35.240.162.20",
     database="serantau",
     user="postgres",
@@ -64,7 +64,7 @@ def upload_files():
     cur = conn.cursor()
     result = []
     if len(food_predict)>0:
-        cur.execute(f"select * from models where name in ({t})")
+        cur.execute(f"select * from models where name in {t}")
         rows = cur.fetchall()
     
         for row in rows:
@@ -74,10 +74,11 @@ def upload_files():
                     'calorie': row[3],
                     'fat': row[4],
                     'protein': row[5],
-                    'carbohydrate': row[6]
+                    'carbohydrate': row[6],
+                    'image':row[7],
                     }
             result.append(temp)
-        cur.close()
+    cur.close()
     # if filename != '':
     #     file_ext = os.path.splitext(filename)[1]
     #     if file_ext not in app.config['UPLOAD_EXTENSIONS'] or \
@@ -93,4 +94,4 @@ def upload(filename):
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0', port=80)
+    app.run(debug=True, host='0.0.0.0', port=8080)
