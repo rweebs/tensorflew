@@ -27,6 +27,12 @@ def load_image_into_numpy_array(path):
   return np.array(image.getdata()).reshape(
       (im_height, im_width, 3)).astype(np.uint8)
 
+def load_image_into_array(img_data):
+  image = Image.open(img_data)
+  (im_width, im_height) = image.size
+  return np.array(image.getdata()).reshape(
+      (im_height, im_width, 3)).astype(np.uint8)
+
 def run_inference_for_single_image(model, image):
   image = np.asarray(image)
   # The input needs to be a tensor, convert it using `tf.convert_to_tensor`.
