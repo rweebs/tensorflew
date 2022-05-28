@@ -1,0 +1,69 @@
+item {
+    name: "Nasi putih"
+    id: 1
+}
+
+item {
+    name: "Nasi goreng"
+    id: 2
+}
+
+item {
+    name: "Capcay"
+    id: 3
+}
+
+item {
+    name: "Bihun goreng"
+    id: 4
+}
+
+item {
+    name: "Tahu goreng"
+    id: 5
+}
+
+item {
+    name: "Bakwan"
+    id: 6
+}
+
+item {
+    name: "Ayam"
+    id: 7
+}
+
+item {
+    name: "Tumis kangkung"
+    id: 8
+}
+
+item {
+    name: "Rendang"
+    id: 9
+}
+
+item {
+    name: "Tumis buncis"
+    id: 10
+}
+
+item {
+    name: "Gudeg"
+    id: 11
+}
+
+item {
+    name: "Kerupuk"
+    id: 12
+}
+
+item {
+    name: "Omelette"
+    id: 13
+}
+
+item {
+    name: "Oseng mie"
+    id: 14
+}
