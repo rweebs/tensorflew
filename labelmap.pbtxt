@@ -64,6 +64,141 @@ item {
 }
 
 item {
-    name: "Oseng mie"
+    name: "Tumis mie"
     id: 14
+}
+
+item {
+    name: "Bakso goreng"
+    id: 15
+}
+
+item {
+    name: "Kentang mustofa"
+    id: 16
+}
+
+item {
+    name: "Nasi kuning"
+    id: 17
+}
+
+item {
+    name: "Nugget goreng"
+    id: 18
+}
+
+item {
+    name: "Pisang"
+    id: 19
+}
+
+item {
+    name: "Kentang balado"
+    id: 20
+}
+
+item {
+    name: "Telur balado"
+    id: 21
+}
+
+item {
+    name: "Telur ceplok"
+    id: 22
+}
+
+item {
+    name: "Telur dadar"
+    id: 23
+}
+
+item {
+    name: "Tempe goreng"
+    id: 24
+}
+
+item {
+    name: "Teri goreng"
+    id: 25
+}
+
+item {
+    name: "Tumis kacang panjang"
+    id: 26
+}
+
+item {
+    name: "Ayam asam manis"
+    id: 27
+}
+
+item {
+    name: "Ayam bakar"
+    id: 28
+}
+
+item {
+    name: "Ayam goreng"
+    id: 29
+}
+
+item {
+    name: "Ayam suwir"
+    id: 30
+}
+
+item {
+    name: "Jeruk"
+    id: 31
+}
+
+item {
+    name: "Tumis tempe"
+    id: 32
+}
+
+item {
+    name: "Lalapan"
+    id: 33
+}
+
+item {
+    name: "Opor ayam"
+    id: 34
+}
+
+item {
+    name: "Pecel"
+    id: 35
+}
+
+item {
+    name: "Perkedel"
+    id: 36
+}
+
+item {
+    name: "Sambal"
+    id: 37
+}
+
+item {
+    name: "Serundeng"
+    id: 38
+}
+
+item {
+    name: "Telur"
+    id: 39
+}
+
+item {
+    name: "Telur asin"
+    id: 40
+}
+
+item {
+    name: "Telur goreng"
+    id: 41
 }
